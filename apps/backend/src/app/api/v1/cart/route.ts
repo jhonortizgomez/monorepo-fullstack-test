@@ -24,11 +24,9 @@ export async function POST(req: NextRequest) {
 export async function DELETE(req: NextRequest) {
   try {
     const { id } = await req.json();
-
     if (!id) {
       return NextResponse.json({ error: "ID requerido" }, { status: 400 });
     }
-
     cart = cart.filter((item) => item.id !== id);
     return NextResponse.json({ message: "Producto eliminado", cart });
   } catch (error) {
