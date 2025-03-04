@@ -19,16 +19,14 @@ export const CartProductsList = () => {
     useEffect(() => { fetchProducts(); }, [cart]);
   
     if (loading) {
-      return <p>Cargando productos...</p>;
+      return <p className="text-black">Cargando productos...</p>;
     }
 
   return (
     <ul className="space-y-4">
       {productsCart.map((product: ProductType) => {
-        const { id } = product;
-
         return (
-          <CartProductCard key={id} />
+          <CartProductCard key={ product.id } product={ product }/>
         );
       })}
     </ul>

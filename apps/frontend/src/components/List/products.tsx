@@ -38,15 +38,11 @@ export const ProductList = () => {
       {products.length ? (
         <div className="flex flex-wrap gap-6 justify-center">
           {products.map((product) => {
-            const { id, name, price } = product;
-
             return (
               <ProductCard
-                key={id}
-                id={id}
-                name={name}
-                price={price}
-                onClick={addProductToCartEvent}
+                key={ product.id }
+                product={ product }
+                onClick={ addProductToCartEvent }
               />
             );
           })}
