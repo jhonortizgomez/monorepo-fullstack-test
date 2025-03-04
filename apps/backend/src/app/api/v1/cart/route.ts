@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-let cart: { id: string; name: string; price: number }[] = [];
+let cart: { id: string; name: string; price: number, image: string }[] = [];
 
 function addCorsHeaders(response: NextResponse) {
   response.headers.set("Access-Control-Allow-Origin", "*");
@@ -16,12 +16,12 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
-    const { id, name, price } = await req.json();
+    const { id, name, price, image } = await req.json();
     if (!id || !name || !price) {
       const response = NextResponse.json({ error: "Faltan datos" }, { status: 400 });
       return addCorsHeaders(response);
     }
-    const newProduct = { id, name, price };
+    const newProduct = { id, name, price, image };
     cart.push(newProduct);
     const response = NextResponse.json({ message: "Producto agregado", cart });
     return addCorsHeaders(response);
