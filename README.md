@@ -1,84 +1,62 @@
-# Turborepo starter
+# Monorepo Fullstack Test
 
-This Turborepo starter is maintained by the Turborepo core team.
+Este es un monorepo construido con Next.js 15, utilizando Turborepo para la gestión eficiente de los paquetes y aplicaciones. El monorepo incluye un backend y un frontend, ambos desarrollados con Next.js, y organizados con un paquete central llamado `@repo/core`, que contiene la lógica compartida.
 
-## Using this example
+##  Descripción del Proyecto
 
-Run the following command:
+-   **Backend**: Implementado con Next.js 15, expone endpoints para manejar productos y carritos de compra.
+-   **Frontend**: Desarrollado con Next.js 15, consume los endpoints del backend para mostrar productos y gestionar el carrito de compras.
+-   **Core**: Contiene datos, configuraciones y lógica compartida entre el frontend y el backend.
 
-```sh
-npx create-turbo@latest
-```
+##  Tecnologías Utilizadas
 
-## What's inside?
+-   Next.js 15 (Frontend y Backend)
+-   React 19
+-   Turborepo (Monorepo Management)
+-   TypeScript
+-   Zustand (State Management)
+-   TailwindCSS (Estilos)
+-   ESLint & Prettier (Calidad de Código)
 
-This Turborepo includes the following packages/apps:
+##  Scripts Disponibles (Raíz del Monorepo)
 
-### Apps and Packages
+### ️ Desarrollo y Construcción
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+-   `npm run dev` → Ejecuta el frontend y el backend en modo desarrollo.
+-   `npm run build` → Construye todas las aplicaciones dentro del monorepo.
+-   `npm run build-backend` → Construye solo el backend.
+-   `npm run build-frontend` → Construye solo el frontend.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+##  Cómo Ejecutar el Proyecto
 
-### Utilities
+1.  Clonar el repositorio:
 
-This Turborepo has some additional tools already setup for you:
+    ```bash
+    git clone [https://github.com/tu_usuario/monorepo-fullstack-test.git](https://github.com/tu_usuario/monorepo-fullstack-test.git)
+    cd monorepo-fullstack-test
+    ```
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+2.  Instalar dependencias:
 
-### Build
+    ```bash
+    npm install
+    ```
 
-To build all apps and packages, run the following command:
+3.  Iniciar el entorno de desarrollo:
 
-```
-cd my-turborepo
-pnpm build
-```
+    ```bash
+    npm run dev
+    ```
 
-### Develop
+##  Notas
 
-To develop all apps and packages, run the following command:
+-   Se recomienda usar Node.js 18+ para compatibilidad.
+-   Este monorepo usa Turborepo, lo que mejora el rendimiento al compilar y ejecutar los proyectos.
 
-```
-cd my-turborepo
-pnpm dev
-```
+##  Autor
 
-### Remote Caching
+Jhon Esteban Ortiz Gómez
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+##  Licencia
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+MIT
