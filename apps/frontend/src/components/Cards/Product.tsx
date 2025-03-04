@@ -1,19 +1,24 @@
+import { useCartStore } from "@repo/core/store/cart";
 import Image from "next/image";
 
 export const ProductCard = (props: Props) => {
-  const { id, name, price, onClick } = props;
+  const { product,  onClick } = props;
+  const { image, name, price, id } = product;
+  const { cart } = useCartStore();
 
-  const product = { id, name, price, image: "" }
+  const isProductInCart = cart.find((product) => product.id === id)
+
+  const addToCartEvent = () => onClick(product)
 
   return (
-    <a href="#" className="relative block rounded-tr-3xl border border-gray-100 w-2xs">
+    <a className="relative block rounded-tr-3xl border border-gray-100 w-2xs">
       <span className="absolute -right-px -top-px rounded-bl-3xl rounded-tr-3xl bg-rose-600 px-6 py-4 font-medium uppercase tracking-widest text-white">
         {`$ ${ price }`}
       </span>
 
       <Image
-        src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=2672&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt=""
+        src={ image }
+        alt="imagen del prooducto"
         className="h-80 w-full rounded-tr-3xl object-cover"
         width={ 300 }
         height={ 300 }
@@ -26,19 +31,17 @@ export const ProductCard = (props: Props) => {
           eum vitae aliquid at sed dignissimos.
         </p>
 
-        <span 
-          onClick={ () => onClick(product) }
+        <button type="button" 
+          onClick={isProductInCart ? () => null : addToCartEvent }
           className="mt-4 block rounded-md border border-indigo-900 bg-indigo-900 px-5 py-3 text-sm font-medium uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-indigo-900">
-          Agregar al carrito
-        </span>
+          {isProductInCart ? "Agregado" : "Agregar al carrito" }
+        </button>
       </div>
     </a>
   )
 }
 
 type Props = {
-  id: number;
-  name: string;
-  price: number;
+  product: ProductType
   onClick: (product: ProductType) => void
 }
