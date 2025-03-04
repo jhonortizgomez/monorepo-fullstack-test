@@ -3,11 +3,15 @@ import { getProducts } from "@repo/core/backend/api/products";
 import { ProductCard } from "../Cards/Product";
 import { useBudgetStore } from "@repo/core/store/budget";
 import { useEffect, useState } from "react";
+import { AddProductToCart } from "@repo/core/backend/api/cart";
+import { useCartStore } from "@repo/core/store/cart";
 
 export const ProductList = () => {
   const budget = useBudgetStore((state) => state.budget);
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const { addToCart } = useCartStore();
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -15,6 +19,11 @@ export const ProductList = () => {
     setProducts(fetchedProducts);
     setLoading(false);
   };
+
+  const addProductToCartEvent = async(product: any) => {
+    await AddProductToCart(product)
+    addToCart(product)
+  }
 
   useEffect(() => { fetchProducts(); }, [budget]);
 
@@ -28,7 +37,7 @@ export const ProductList = () => {
         const { id, name, price } = product;
 
         return (
-          <ProductCard key={id} id={id} name={name} price={price} />
+          <ProductCard key={id} id={id} name={name} price={price} onClick={ addProductToCartEvent }/>
         );
       })}
     </div>

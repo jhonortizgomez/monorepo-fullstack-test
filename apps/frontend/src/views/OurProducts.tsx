@@ -1,5 +1,5 @@
 import { BudgetForm } from "@/components/Forms/BudgetForm"
-import { ProductList } from "@/components/List/products"
+import { ProductList } from "@/components/List/Products"
 
 export const OurProductsView = () => {
   return (

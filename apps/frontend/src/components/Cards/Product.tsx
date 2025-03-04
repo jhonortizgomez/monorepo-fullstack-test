@@ -1,5 +1,7 @@
 export const ProductCard = (props: Props) => {
-  const { id, name, price } = props;
+  const { id, name, price, onClick } = props;
+
+  const product = { id, name, price }
 
   return (
     <a href="#" className="relative block rounded-tr-3xl border border-gray-100 w-2xs">
@@ -20,8 +22,10 @@ export const ProductCard = (props: Props) => {
           eum vitae aliquid at sed dignissimos.
         </p>
 
-        <span className="mt-4 block rounded-md border border-indigo-900 bg-indigo-900 px-5 py-3 text-sm font-medium uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-indigo-900">
-          Learn More
+        <span 
+          onClick={ () => onClick(product) }
+          className="mt-4 block rounded-md border border-indigo-900 bg-indigo-900 px-5 py-3 text-sm font-medium uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-indigo-900">
+          Agregar al carrito
         </span>
       </div>
     </a>
@@ -32,4 +36,5 @@ type Props = {
   id: number;
   name: string;
   price: number;
+  onClick: (product: any) => void
 }
