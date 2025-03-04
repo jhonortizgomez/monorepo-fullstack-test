@@ -10,7 +10,7 @@ function addCorsHeaders(response: NextResponse) {
 }
 
 export async function GET() {
-  let response = NextResponse.json(cart);
+  const response = NextResponse.json(cart);
   return addCorsHeaders(response);
 }
 
@@ -18,15 +18,15 @@ export async function POST(req: NextRequest) {
   try {
     const { id, name, price } = await req.json();
     if (!id || !name || !price) {
-      let response = NextResponse.json({ error: "Faltan datos" }, { status: 400 });
+      const response = NextResponse.json({ error: "Faltan datos" }, { status: 400 });
       return addCorsHeaders(response);
     }
     const newProduct = { id, name, price };
     cart.push(newProduct);
-    let response = NextResponse.json({ message: "Producto agregado", cart });
+    const response = NextResponse.json({ message: "Producto agregado", cart });
     return addCorsHeaders(response);
-  } catch (error) {
-    let response = NextResponse.json({ error: "Error en la petición" }, { status: 500 });
+  } catch {
+    const response = NextResponse.json({ error: "Error en la petición" }, { status: 500 });
     return addCorsHeaders(response);
   }
 }
@@ -39,12 +39,12 @@ export async function DELETE(req: NextRequest) {
     }
     cart = cart.filter((item) => item.id !== id);
     return NextResponse.json({ message: "Producto eliminado", cart });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Error en la petición" }, { status: 500 });
   }
 }
 
 export async function OPTIONS() {
-  let response = NextResponse.json({});
+  const response = NextResponse.json({});
   return addCorsHeaders(response);
 }
