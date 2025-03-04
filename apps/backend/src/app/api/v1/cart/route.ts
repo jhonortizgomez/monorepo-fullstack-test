@@ -2,22 +2,32 @@ import { NextRequest, NextResponse } from "next/server";
 
 let cart: { id: string; name: string; price: number }[] = [];
 
+function addCorsHeaders(response: NextResponse) {
+  response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
+  response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  return response;
+}
+
 export async function GET() {
-  const response = cart;
-  return NextResponse.json(response)
+  let response = NextResponse.json(cart);
+  return addCorsHeaders(response);
 }
 
 export async function POST(req: NextRequest) {
   try {
     const { id, name, price } = await req.json();
     if (!id || !name || !price) {
-      return NextResponse.json({ error: "Faltan datos" }, { status: 400 });
+      let response = NextResponse.json({ error: "Faltan datos" }, { status: 400 });
+      return addCorsHeaders(response);
     }
     const newProduct = { id, name, price };
     cart.push(newProduct);
-    return NextResponse.json({ message: "Producto agregado", cart });
+    let response = NextResponse.json({ message: "Producto agregado", cart });
+    return addCorsHeaders(response);
   } catch (error) {
-    return NextResponse.json({ error: "Error en la petición" }, { status: 500 });
+    let response = NextResponse.json({ error: "Error en la petición" }, { status: 500 });
+    return addCorsHeaders(response);
   }
 }
 
@@ -32,4 +42,9 @@ export async function DELETE(req: NextRequest) {
   } catch (error) {
     return NextResponse.json({ error: "Error en la petición" }, { status: 500 });
   }
+}
+
+export async function OPTIONS() {
+  let response = NextResponse.json({});
+  return addCorsHeaders(response);
 }

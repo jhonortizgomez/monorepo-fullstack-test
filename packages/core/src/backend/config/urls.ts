@@ -4,5 +4,8 @@ export const backendUrls = {
   products: {
     all: `${ baseUrl }/products`,
     withParams: (budget?: number) => `${ baseUrl }/products?budget=${ budget }`,
+  },
+  cart: {
+    all: `${ baseUrl }/cart`
   }
 }
