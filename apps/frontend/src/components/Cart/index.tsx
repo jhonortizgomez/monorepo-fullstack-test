@@ -1,11 +1,14 @@
 "use client"
 import Image from "next/image"
 import { CartProductsList } from "../List/CartProducts"
+import { useCartStore } from "@repo/core/store/cart"
 
 export const Cart = () => {
+  const { isCartOpen } = useCartStore();
+
   return (
     <div
-      className="absolute z-10 right-0 top-[-56] w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 mt-30 sm:px-6 lg:px-8"
+      className={`${isCartOpen ? "block" : "hidden"} absolute z-10 right-0 top-[-56] w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 mt-30 sm:px-6 lg:px-8`}
       aria-modal="true"
       role="dialog">
       <button className="absolute end-4 top-4 text-gray-600 transition hover:scale-110">
