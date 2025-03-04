@@ -1,9 +1,9 @@
 "use client";
 import { useBudgetStore } from "@repo/core/store/budget";
-import { Input } from "@repo/ui/form/Input";
 import { budgetSchema } from "@repo/core/schemas/budget";
 import { formValidate } from "@repo/core/helpers/formValidate";
 import { FormEvent, useState } from "react";
+import { Input } from "../Input";
 
 export const BudgetForm = () => {
   const [errors, setErrors] = useState<LocalErrors>({});
