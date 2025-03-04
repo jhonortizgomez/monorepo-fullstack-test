@@ -2,7 +2,7 @@
 import { getProducts } from "@repo/core/backend/api/products";
 import { ProductCard } from "../Cards/Product";
 import { useBudgetStore } from "@repo/core/store/budget";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AddProductToCart } from "@repo/core/backend/api/cart";
 import { useCartStore } from "@repo/core/store/cart";
 
@@ -13,19 +13,19 @@ export const ProductList = () => {
 
   const { addToCart } = useCartStore();
 
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
     setLoading(true);
     const fetchedProducts = await getProducts(budget);
     setProducts(fetchedProducts);
     setLoading(false);
-  };
+  }, [budget]);
 
   const addProductToCartEvent = async(product: ProductType) => {
     await AddProductToCart(product)
     addToCart(product)
   }
 
-  useEffect(() => { fetchProducts(); }, [budget]);
+  useEffect(() => { fetchProducts(); }, [fetchProducts]);
 
   if (loading) {
     return <p>Cargando productos...</p>;

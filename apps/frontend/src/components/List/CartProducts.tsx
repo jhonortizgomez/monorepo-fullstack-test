@@ -25,7 +25,7 @@ export const CartProductsList = () => {
   return (
     <ul className="space-y-4">
       {productsCart.map((product: ProductType) => {
-        const { id, name, price } = product;
+        const { id } = product;
 
         return (
           <CartProductCard key={id} />

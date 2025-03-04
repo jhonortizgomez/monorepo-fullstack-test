@@ -1,12 +1,16 @@
+import Image from "next/image"
+
 export const CartProductCard = () => {
 
 
   return (
     <li className="flex items-center gap-4">
-      <img
+      <Image
         src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
-        alt=""
+        alt="Imagen del producto"
         className="size-16 rounded-sm object-cover"
+        width={ 100 }
+        height={ 100 }
       />
 
       <div>
@@ -26,10 +30,4 @@ export const CartProductCard = () => {
       </div>
     </li>
   )
-}
-
-type Props = {
-  id: number;
-  name: string;
-  price: number;
 }

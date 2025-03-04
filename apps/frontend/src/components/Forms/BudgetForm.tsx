@@ -55,7 +55,3 @@ export const BudgetForm = () => {
 type LocalErrors = { 
   budget?: string,
 }
-
-type Props = {
-  updateBudget: (n?:number) => void;
-}
