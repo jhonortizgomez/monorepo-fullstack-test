@@ -8,7 +8,7 @@ import { useCartStore } from "@repo/core/store/cart";
 
 export const ProductList = () => {
   const budget = useBudgetStore((state) => state.budget);
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState(true);
 
   const { addToCart } = useCartStore();
@@ -20,7 +20,7 @@ export const ProductList = () => {
     setLoading(false);
   };
 
-  const addProductToCartEvent = async(product: any) => {
+  const addProductToCartEvent = async(product: ProductType) => {
     await AddProductToCart(product)
     addToCart(product)
   }
@@ -33,7 +33,7 @@ export const ProductList = () => {
 
   return (
     <div className="flex flex-wrap gap-6 justify-center">
-      {products.map((product: any) => {
+      {products.map((product) => {
         const { id, name, price } = product;
 
         return (

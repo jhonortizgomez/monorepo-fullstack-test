@@ -3,13 +3,12 @@ import type { StringSchema, AnyObject, NumberSchema } from "yup";
 export const formValidate = async(form: FormValidate) => {
   const isValid = form.map(async(field) => {
     const { schema, value } = field;
-    console.log('valid', value)
     try {
       await schema.validate(value);
       return true;
-    } catch (error: any) {
-      const label = error.params.label as string;
-      const message = error.errors[0] as string ;
+    } catch (error: Error) {
+      const label = error.params.label;
+      const message = error.errors[0];
       return { label, message };
     }
   })
@@ -29,3 +28,8 @@ export type FormValidate = ({
   schema: NumberSchema<number, AnyObject, undefined, "">;
   value: FormDataEntryValue | number | null;
 })[]
+
+type Error = {
+  params: { label: string }
+  errors: string[]
+} | any

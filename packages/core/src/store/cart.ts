@@ -1,8 +1,9 @@
 import { create } from 'zustand'
+import { ProductType } from '../types'
 
 type Store = {
-  cart: any[]
-  addToCart: (product: any) => void
+  cart: ProductType[]
+  addToCart: (product: ProductType) => void
 }
 
 export const useCartStore = create<Store>()((set) => ({

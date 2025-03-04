@@ -1,7 +1,7 @@
 export const ProductCard = (props: Props) => {
   const { id, name, price, onClick } = props;
 
-  const product = { id, name, price }
+  const product = { id, name, price, image: "" }
 
   return (
     <a href="#" className="relative block rounded-tr-3xl border border-gray-100 w-2xs">
@@ -36,5 +36,5 @@ type Props = {
   id: number;
   name: string;
   price: number;
-  onClick: (product: any) => void
+  onClick: (product: ProductType) => void
 }

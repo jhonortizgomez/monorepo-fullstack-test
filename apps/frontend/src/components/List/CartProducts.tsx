@@ -4,7 +4,7 @@ import { CartProductCard } from "../Cards/CartProduct";
 import { useCartStore } from "@repo/core/store/cart";
 
 export const CartProductsList = () => {
-    const [productsCart, setProductsCart] = useState<any[]>([]);
+    const [productsCart, setProductsCart] = useState<ProductType[]>([]);
     const [loading, setLoading] = useState(true);
 
     const { cart } = useCartStore();
@@ -24,7 +24,7 @@ export const CartProductsList = () => {
 
   return (
     <ul className="space-y-4">
-      {productsCart.map((product: any) => {
+      {productsCart.map((product: ProductType) => {
         const { id, name, price } = product;
 
         return (

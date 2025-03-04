@@ -16,7 +16,7 @@ export const getProductsCart = async() => {
   }
 }
 
-export const AddProductToCart = async(product: any) => {
+export const AddProductToCart = async(product: ProductType) => {
   try {
     const response = await fetch(cartUrls.all, {
       method: "POST",
