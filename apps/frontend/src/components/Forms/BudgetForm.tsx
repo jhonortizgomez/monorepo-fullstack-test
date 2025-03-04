@@ -1,5 +1,6 @@
 "use client"
 import { useBudgetStore } from "@repo/core/store/budget"
+import { Input } from "@repo/ui/form/Input"
 import { budgetSchema } from "@repo/core/schemas/budget"
 import { formValidate } from "@repo/core/helpers/formValidate"
 import { FormEvent, useState } from "react";
@@ -35,16 +36,14 @@ export const BudgetForm = () => {
 
   return (
     <form className="flex items-center justify-center gap-4" onSubmit={ handleSubmit } id="budgetForm">
-      <label htmlFor="budget"> Escribe tu presupuesto: </label>
-      <input 
-        className="bg-white border-0 rounded-3xl py-2 px-4 text-black" 
-        id="budget"
-        placeholder="150"
+      <Input 
+        label="Escribe tu presupuesto:"
         name="budget"
-        type="number" 
+        placeholder="150"
+        type="number"
+        textError={errors.budget}
         required
       />
-      {!!errors.budget && <p className="text-red-500 text-sm mt-1">{ errors.budget }</p>}
       <button className="text-green-400 border p-2 rounded-2xl" type="submit">
           Buscar
       </button>
