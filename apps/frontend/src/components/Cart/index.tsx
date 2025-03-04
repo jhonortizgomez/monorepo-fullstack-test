@@ -19,13 +19,12 @@ export const Cart = () => {
       <div className="mt-4 space-y-6">
         <CartProductsList />
 
-        <div className="space-y-4 text-center">
+        <button className="space-y-4 text-center" type="button" onClick={ handleCartEvent }>
           <a
-            href="#"
             className="inline-block text-sm text-gray-500 underline underline-offset-4 transition hover:text-gray-600">
             Seguir comprando
           </a>
-        </div>
+        </button>
       </div>
     </div>
   )
