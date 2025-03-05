@@ -7,16 +7,18 @@ export const CartProductsList = () => {
     const [productsCart, setProductsCart] = useState<ProductType[]>([]);
     const [loading, setLoading] = useState(true);
 
-    const { cart } = useCartStore();
+    const { cart, emptyCart, updateCart } = useCartStore();
   
     const fetchProducts = async () => {
       setLoading(true);
+			emptyCart();
       const fetchedProducts = await getProductsCart();
-      setProductsCart(fetchedProducts);
+			updateCart(fetchedProducts);
       setLoading(false);
     };
   
-    useEffect(() => { fetchProducts(); }, [cart]);
+    useEffect(() => { fetchProducts(); }, []);
+    useEffect(() => { setProductsCart(cart); }, [cart]);
   
     if (loading) {
       return <p className="text-black">Cargando productos...</p>;

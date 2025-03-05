@@ -2,15 +2,19 @@ import { create } from 'zustand'
 import { ProductType } from '../types'
 
 type Store = {
-  cart: ProductType[]
+  cart: ProductType[];
   isCartOpen: boolean;
-  addToCart: (product: ProductType) => void
-  handleCart: (isOpen: boolean) => void
+  addToCart: (product: ProductType) => void;
+  handleCart: (isOpen: boolean) => void;
+  updateCart: (products: ProductType[]) => void;
+  emptyCart: () => void;
 }
 
 export const useCartStore = create<Store>()((set) => ({
   cart: [],
   isCartOpen: false,
   addToCart: (cartItem) => set((state) => ({ cart: [...state.cart, cartItem] })),
-  handleCart: (isOpen) => set((state) => ({ isCartOpen: isOpen })),
+  updateCart: (products) => set(() => ({ cart: products })),
+  handleCart: (isOpen) => set(() => ({ isCartOpen: isOpen })),
+  emptyCart: () => set(() => ({ cart: [] })),
 }))
