@@ -32,7 +32,7 @@ Este es un monorepo construido con Next.js 15, utilizando Turborepo para la gest
 1.  Clonar el repositorio:
 
     ```bash
-    git clone [https://github.com/tu_usuario/monorepo-fullstack-test.git](https://github.com/tu_usuario/monorepo-fullstack-test.git)
+    git clone https://github.com/jhonortizgomez/monorepo-fullstack-test.git
     cd monorepo-fullstack-test
     ```
 
